@@ -1,21 +1,23 @@
+$(document).ready(function(){
 // create words and random selector
 // number of underscores correlates to the randomly selected word in the array
 var secretWords = ['Jake', 'Finn', 'Bubblegum', 'Marciline', 'Rainicorn', 'Peppermint', 'Tart'],
     random = Math.floor(Math.random() * secretWords.length),
     randomWord = secretWords[random];
-
+var result = "";
+var answer = [];
 function blanksFromWord(word) {
-  var result = "";
+
   
   for (var i = 0; i < secretWords.length; i++) {
     result += "_";
   }
   return result;
 }
-$(.card).innerHTML(blanksFromRandom(randomWord))
+$(".card-text").html(result)
 //console.log(randomWord);//
 //console.log(blanksFromWord(randomWord));//
-
+// (blanksFromRandom(randomWord))
 //first, I'm going to give the letters that can be picked
 var alphabetLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var alphabetLetters = secretWords.length;
@@ -47,7 +49,7 @@ var alphabetLetters = secretWords.length;
         //Show answer and congratulate the player
         alert(answer.join(" "));
 alert("Good work! The right answer is " + word);
-
+});
 //now I need to figure out how to get the above to run inside the card
 
 //lines 25 -45 are googlefu and I have no idea what I am doing. At all. 
