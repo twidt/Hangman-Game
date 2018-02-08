@@ -16,7 +16,7 @@ if(gameOn = false){
     });
 }
 
-if(gameOn=true){
+if(gameOn = true){
     function blanksFromWord(word) {
         for (var i = 0; i < secretWords.length; i++) {
         result += "_";
