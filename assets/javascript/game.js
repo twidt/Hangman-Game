@@ -56,10 +56,46 @@ function checkLetters(letter){
     }
 
     // check where word exists
-    for (var i = 0; i < numBlanks; i++) {
-        if(selectedWord[i] == letter){
-            blanksAndSuccesses[i] == letter;
+    if (isLetterInWord) {
+        for (var i = 0; i < numBlanks; i++) {
+            if(selectedWord[i] == letter){
+                blanksAndSuccesses[i] = letter;
+            }
         }
+    }
+   else {
+       wrongLetters.push(letter);
+       guessesLeft--
+   }
+
+   console.log(blanksAndSuccesses);
+   
+}
+
+function roundComplete(){
+    console.log("Win Count: " + winCount + "| Loss Count: " + lossCount + " | Guesses Left" + guessesLeft );
+    // update HTML
+    document.getElementById("numGuesses").innerHTML = guessesLeft;
+    document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(" ");
+    document.getElementById("wrongGuesses").innerHTML = wrongLetters.join(" ");
+    // check if user won
+    if (lettersinWord.toString() == blanksAndSuccesses.toString()){
+        winCount++;
+        alert("You Won!");
+
+        // update HTML
+        document.getElementById("winCounter").innerHTML= winCount;
+
+        startGame();
+    }
+    // check if user lost
+    else if(guessesLeft == 0) {
+        lossCount++;
+        alert("You Lost!");
+
+        // update HTML
+        document.getElementById("lossCounter").innerHTML = lossCount;
+        startGame();
     }
 }
 
@@ -70,6 +106,7 @@ startGame();
 document.onkeyup = function(event) {
     var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
     checkLetters(letterGuessed);
+    roundComplete();
     // testing and debugging
     console.log(letterGuessed)
 }
