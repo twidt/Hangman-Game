@@ -1,68 +1,75 @@
-$(document).ready(function(){
-    console.log ("testing3")
-// create words and random selector
-// number of underscores correlates to the randomly selected word in the array
-var secretWords = ['Jake', 'Finn', 'Bubblegum', 'Marciline', 'Rainicorn', 'Peppermint', 'Tart'];
-var random = Math.floor(Math.random() * secretWords.length);
-var randomWord = secretWords[random];
-var result = "";
-var answer = [];
-var gameOn = false;
+// global variables
+// ============================================================
+// arrays and variables
 
-if(gameOn = false){
-    $(document).keyup(function(){
-        gameOn = true
-        console.log("testing2")
-    });
+var wordOptions = ["jake", "finn", "bubblegum", "marciline", "rainicorn", "peppermint", "tart"];
+var selectedWord = "";
+var lettersinWord = [];
+var numBlanks = 0;
+var blanksAndSuccesses = [];
+var wrongLetters = [];
+
+// Game counters
+var winCount = 0;
+var lossCount = 0;
+var guessesLeft = 9;
+
+// functions
+// ===========================================================
+
+function startGame () {
+    selectedWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
+    lettersinWord = selectedWord.split("");
+    numBlanks = lettersinWord.length;
+
+    // reset
+    guessesLeft = 9;
+    wrongLetters = [];
+    blanksAndSuccesses = [];
+
+    // get the right numbers of blanks
+    for (var i= 0; i<numBlanks; i++){
+        blanksAndSuccesses.push("_");
+    }
+
+// update html
+document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join("  ");
+document.getElementById("numGuesses").innerHTML = guessesLeft;
+document.getElementById("winCounter").innerHTML = winCount;
+document.getElementById("lossCounter").innerHTML = lossCount;
+
+    // testing and debugging
+    console.log(selectedWord);
+    console.log(lettersinWord);
+    console.log(numBlanks);
+    console.log(blanksAndSuccesses);
 }
 
-if(gameOn = true){
-    function blanksFromWord(word) {
-        for (var i = 0; i < secretWords.length; i++) {
-        result += "_";
-        console.log("testing")
+function checkLetters(letter){
+    // check if letter exists
 
-    }
-    $(".card-text").html(result)
-//console.log(randomWord);//
-//console.log(blanksFromWord(randomWord));//
-// (blanksFromRandom(randomWord))
-//first, I'm going to give the letters that can be picked
-    var alphabetLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    var lengthofsecretWords = secretWords.length;
-        
-        //The playing loop
-        // while (alphabetLetters > 0) {
-            //This will be the players progress
-            alert("This is the number of remaining letters:\n" + answer.join(" "));
-            
-            //Prompt for player to guess
-            var guess = prompt("Guess a letter or click 'Cancel' to stop the game.");
-            if (prompt === null) {
-                //Game has ended because player left
-                break;
-            } else if (secretWords.length !== 1) {
-                alert("Please enter one single letter.");
-            } else {
-                //Update match with guess
-                for (var j = 0; j < secretWords.length; j++) {
-                    if (secretWords[j] === guess) {
-                        answer[j] = guess;
-                        remainingLetters--;
-                //     }
-                // }
-            }
-            //End of playing loop
+    var isLetterInWord = false;
+    for (var i= 0; i < numBlanks; i++){
+        if(selectedWord[i] == letter){
+            isLetterInWord = true;
         }
-        
-        //Show answer and congratulate the player
-        alert(answer.join(" "));
-        alert("Good work! The right answer is " + word);
+    }
+
+    // check where word exists
+    for (var i = 0; i < numBlanks; i++) {
+        if(selectedWord[i] == letter){
+            blanksAndSuccesses[i] == letter;
         }
     }
 }
-});
-//now I need to figure out how to get the above to run inside the card
 
-//lines 25 -45 are googlefu and I have no idea what I am doing. At all. 
-//line 15 jquery attempt?? sigh. I tried.
+// main process
+// ===========================================================
+startGame();
+
+document.onkeyup = function(event) {
+    var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
+    checkLetters(letterGuessed);
+    // testing and debugging
+    console.log(letterGuessed)
+}

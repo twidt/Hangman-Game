@@ -13,7 +13,7 @@ var guessesLeft = 9;
 // lets get it started
 
 function startGame () {
-	selectedWord = secretWords[Math.floor(Math.random() * wordOptions.length)];
+	selectedWord = secretWords[Math.floor(Math.random() * secretWords.length)];
 	lettersinWord = selectedWord.split("");
 	numBlanks = lettersinWord.length;
 
@@ -32,20 +32,27 @@ function startGame () {
   document.getElementByID("winCounter").innerHTML = winCount;
   document.getElementByID("lossCounter").innerHTML = lossCount;
 
+  // testing
+  console.log(selectedWord);
+  console.log(lettersinWord);
+  console.log(numBlanks);
+  console.log(blanksAndSuccesses);
+
 }
 
 function checkLetters(letter){
 	var isLetterInWord = false;
 
-	for (var i = 0; i < numBlanks; i++) {
+	for (var i=0; i < numBlanks; i++) {
 		if(selectedWord[i] == letter){
 			isLetterInWord = true;
 		}
 	}
 
 	if(isLetterInWord){
-		for (var i = 0; i<numBlanks; i++) {
+		for (var i=0; i<numBlanks; i++) {
 		if(selectedWord[i] == letter) {
+				console.log("TEST");
 			blanksAndSuccesses[i] == letter;
 	}
 	

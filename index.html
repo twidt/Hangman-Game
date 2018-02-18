@@ -1,46 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hang-Man Game</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Hangman Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="
+  sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body>
-	<div class="card text-white bg-info mb-3" style="max-width: 20rem;">
-  <div class="card-header">Adventure Time Hangman</div>
-  <div class="card-body">
-    <h4 class="card-title">Word to Guess</h4>
-    <p class="card-text">_ _ _ _ _<br>
-    
-   Wrong Guesses: <span id="wrongGuesses"></span>
-    </p>
-   Guesses Left: <span id="numGuesses"></span>
-    </p>
-    Win Counter: <span id="winCounter"></span>
-    </p>
-    Loss Counter: <span id="lossCounter"></span>
-    </p>
+
+  <div class="container">
+      <div class="jumbotron">
+          <h1>Adventure Time Hangman!</h1>
+          <p>Guess who, the residents of Ooo!</p>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Words to Guess</h3>
+            </div>
+            <div class="panel-body">
+              <h2 id="wordToGuess">_ _ _ _ _</h2>
+            </div>
+          </div>
+          <div class="panel panel-default">
+              <div class="panel-body">
+                Wrong Guesses: <span id="wrongGuesses"></span> 
+              </div>
+            </div>
+         <div class="panel panel-default">
+                <div class="panel-body">
+                  Guesses Left: <span id="numGuesses"></span>
+                </div>
+              </div> 
+          <div class="panel panel-default">
+                  <div class="panel-body">
+                    Win Counter: <span id="winCounter"></span>
+                  </div>
+                </div> 
+          <div class="panel panel-default">
+                    <div class="panel-body">
+                      Loss Counter: <span id="lossCounter"></span>
+                    </div>
+                  </div> 
+              
+        
+
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script
-        src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-<script type="text/javascript" src="assets/javascript/game1.js"></script>
+  <script src="assets/javascript/game.js"></script>
 </body>
 </html>
